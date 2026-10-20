@@ -1,18 +1,27 @@
 # Operating system files
-.DS_Store
-._*
-Thumbs.db
-Desktop.ini
 
 # Local Python environments and caches
+
+# Local credentials (keep sanitized examples in version control)
+
+# Local dependencies, caches, operating-system files, and runtime output
+node_modules/
 .venv/
 venv/
 __pycache__/
 *.py[cod]
-.ipynb_checkpoints/
 .pytest_cache/
-
-# Local credentials (keep sanitized examples in version control)
+.ipynb_checkpoints/
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.pio/
+*.log
+*.bak
+*.backup
+*.db-shm
+*.db-wal
 .env
 .env.*
 !.env.example

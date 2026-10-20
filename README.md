@@ -1,4 +1,4 @@
-# MaroQuant Strategies for Freqtrade
+# Freqtrade Strategy Lab
 
 A collection of custom algorithmic trading strategies designed for the [Freqtrade](https://www.freqtrade.io/) crypto trading bot. This pack includes trend-following, mean-reversion, and hybrid regime-switching experiments across different timeframes.
 
@@ -76,3 +76,11 @@ Python module filenames describe the strategy and timeframe in snake_case.
 Class names are retained for compatibility with existing Freqtrade configurations.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for file and commit conventions.
+
+## Repository purpose and workflow
+
+Four distinct experimental Freqtrade strategies using MACD, ADX, Bollinger bands, and EMA signals.
+
+Canonical repository: https://github.com/kamelch/freqtrade-strategy-lab
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for commit, branch, validation, and generated-file conventions.
