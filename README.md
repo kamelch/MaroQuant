@@ -1,6 +1,6 @@
 # MaroQuant Strategies for Freqtrade
 
-A collection of custom algorithmic trading strategies designed for the [Freqtrade](https://www.freqtrade.io/) crypto trading bot. This pack includes trend-following, mean-reversion, and hybrid regime-switching algorithms optimized for various timeframes.
+A collection of custom algorithmic trading strategies designed for the [Freqtrade](https://www.freqtrade.io/) crypto trading bot. This pack includes trend-following, mean-reversion, and hybrid regime-switching experiments across different timeframes.
 
 ## 🧠 Strategy Overview
 
@@ -9,7 +9,7 @@ A collection of custom algorithmic trading strategies designed for the [Freqtrad
 **Concept:** Market Regime Switching.
 * **Ranging Market (Low ADX):** Uses **Bollinger Bands** to trade mean reversion (buy low, sell high).
 * **Trending Market (High ADX):** Switches to **MACD** to catch strong breakouts and trend continuations.
-* **Why it works:** Adapts to changing market conditions rather than forcing a single logic type.
+* **Design intent:** Adapt to changing market conditions; performance must be established by backtesting.
 
 ### 2. `macd_adx_4h.py` (Trend Follower)
 **Timeframe:** 4h
@@ -49,7 +49,7 @@ A collection of custom algorithmic trading strategies designed for the [Freqtrad
 ## ⚙️ Configuration Hints
 
 * **Timeframes:** Strategies are hardcoded for `4h` or `5m`. Ensure your config file provides data for these candles.
-* **Pairs:** `Maro4h_Macd_Adx` and the Hybrid strategy specifically request informative pairs (BTC/USD, ETH/USD) for trend confirmation.
+* **Pairs:** `Maro4hMacdAdx` and `Maro4hBbAdxMacd` specifically request informative pairs (BTC/USD, ETH/USD) for trend confirmation.
 * **Libraries:** Requires `talib`, `numpy`, and `freqtrade` standard libraries.
 
 ---
@@ -57,3 +57,22 @@ A collection of custom algorithmic trading strategies designed for the [Freqtrad
 ## ⚠️ Disclaimer
 
 These strategies are for educational purposes. Cryptocurrency trading involves high risk. **Always backtest** extensively (`freqtrade backtesting ...`) and run in **Dry Run** mode before deploying real capital.
+
+## Strategy names and compatibility
+
+The four files implement different strategies; they are not successive backup copies.
+Pass the Python class name to Freqtrade's `--strategy` option:
+
+- `macd_adx_4h.py`: `Maro4hMacdAdx`, 4h.
+- `macd_stddev_5m.py`: `Maro4hMacdSd`, 5m.
+- `ema_crossover_5m.py`: `ema`, 5m. The historical filename differs from its EMA logic.
+- `bollinger_macd_adx_4h.py`: `Maro4hBbAdxMacd`, 4h.
+
+These are legacy strategies using `populate_buy_trend` / `populate_sell_trend`
+and buy/sell signal columns. No exact Freqtrade version is pinned here, so verify
+the strategy interface against your installed release before running the installation
+example. This cleanup does not migrate the strategy interface or validate profitability.
+Python module filenames describe the strategy and timeframe in snake_case.
+Class names are retained for compatibility with existing Freqtrade configurations.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for file and commit conventions.
